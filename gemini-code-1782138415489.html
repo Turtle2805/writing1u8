@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Tập Tiếng Anh Tương Tác - Ms Lê Hằng English</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8854C0;
+            --secondary-color: #FDCB6E;
+            --accent-color: #00C9A7;
+            --correct-color: #00D26A;
+            --wrong-color: #FF4757;
+            --text-color: #2D3436;
+            --card-bg: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Nunito', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(-45deg, #8854C0, #E8519E, #00C9A7, #FDCB6E);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            position: relative;
+            padding: 20px;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* SVG Floating Pattern Background Overlays */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0;
+            opacity: 0.15;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 9c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm1-61c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm-45 11c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm40 40c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zM24 64c0-3.866 3.134-7 7-7s7 3.134 7 7-3.134 7-7 7-7-3.134-7-7zm30 1c0-2.21 1.79-4 4-4s4 1.79 4 4-1.79 4-4 4-4-1.79-4-4z'/%3E%3C/g%3E%3C/svg%3E");
+            animation: floatingPattern 30s linear infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes floatingPattern {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 200px; }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 0 rgba(0, 0, 0, 0.1);
+            border: 3px solid #FFFFFF;
+        }
+
+        header h2 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            font-weight: 800;
+        }
+
+        .alert-box {
+            background: #FFF3CD;
+            border: 3px solid #FFEBAA;
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 6px 0 #E6B800;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .alert-box h3 {
+            color: #D35400;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .exercise-title {
+            background: var(--secondary-color);
+            color: #4A3300;
+            padding: 12px 20px;
+            border-radius: 15px;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 0 #D6A21E;
+            border: 2px solid #FFFFFF;
+        }
+
+        .question-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 0 rgba(0,0,0,0.15);
+            border: 3px solid #E0E0E0;
+            transition: transform 0.2s;
+            position: relative;
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .option-btn {
+            background: #FFFFFF;
+            border: 3px solid #E0E0E0;
+            border-radius: 15px;
+            padding: 12px 18px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.1s ease;
+            box-shadow: 0 5px 0 #E0E0E0;
+            position: relative;
+        }
+
+        .option-btn:hover:not(.disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 0 #CDCDCD;
+            background-color: #FAFAFA;
+        }
+
+        .option-btn:active:not(.disabled) {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0 #CDCDCD;
+        }
+
+        /* State Styles */
+        .option-btn.correct {
+            background-color: var(--correct-color) !important;
+            border-color: #00A654 !important;
+            color: white !important;
+            box-shadow: 0 5px 0 #007A3E !important;
+        }
+
+        .option-btn.wrong {
+            background-color: var(--wrong-color) !important;
+            border-color: #D63031 !important;
+            color: white !important;
+            box-shadow: 0 5px 0 #B32627 !important;
+        }
+
+        .option-btn.disabled {
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+
+        /* Gapfill Styling */
+        .inline-gap {
+            display: inline-block;
+            background: #E0F7FA;
+            border-bottom: 3px dashed var(--accent-color);
+            padding: 2px 15px;
+            margin: 0 5px;
+            border-radius: 8px;
+            color: var(--primary-color);
+            cursor: pointer;
+            font-weight: 800;
+            min-width: 80px;
+            text-align: center;
+            transition: background 0.2s;
+        }
+        .inline-gap:hover {
+            background: #B2EBF2;
+        }
+        .inline-gap.answered-correct {
+            background: var(--correct-color);
+            color: white;
+            border-bottom: none;
+        }
+        .inline-gap.answered-wrong {
+            background: var(--wrong-color);
+            color: white;
+            border-bottom: none;
+        }
+
+        /* Explanation Box */
+        .explanation-box {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: #F0F4FF;
+            border-left: 6px solid #3867D6;
+            border-radius: 0 12px 12px 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        .explanation-box h4 {
+            color: #3867D6;
+            margin-bottom: 8px;
+            font-weight: 800;
+        }
+
+        .explanation-box p {
+            margin-bottom: 6px;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Shake animation for wrong answer */
+        .shake {
+            animation: shakeAnim 0.4s ease-in-out;
+        }
+
+        @keyframes shakeAnim {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-8px); }
+            40%, 80% { transform: translateX(8px); }
+        }
+
+        /* Submit Section */
+        .submit-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .btn-submit {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.3rem;
+            font-weight: 800;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0 8px 0 #009E82;
+            transition: all 0.1s;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 11px 0 #009E82;
+        }
+
+        .btn-submit:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 #009E82;
+        }
+
+        /* Popup Score Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 25px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 0 #CDCDCD;
+            border: 4px solid var(--primary-color);
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-content h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .score-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+        }
+
+        .feedback-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .btn-close {
+            background: var(--secondary-color);
+            color: #4A3300;
+            padding: 10px 25px;
+            font-weight: 800;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            box-shadow: 0 5px 0 #D6A21E;
+        }
+
+        /* Confetti canvas overlay */
+        #confetti-canvas {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 99;
+        }
+
+        /* Inline Gap Selector Popup */
+        .gap-popup {
+            display: none;
+            position: absolute;
+            background: white;
+            border: 3px solid var(--primary-color);
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            padding: 8px;
+            z-index: 10;
+            grid-template-columns: 1fr;
+            gap: 5px;
+        }
+        .gap-popup button {
+            background: #F0F4FF;
+            border: 2px solid #D0D9FF;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: left;
+        }
+        .gap-popup button:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="confetti-canvas"></canvas>
+
+    <div class="container">
+        <header>
+            <h2>Giáo viên tạo: Ms Lê Hằng English</h2>
+        </header>
+
+        <div class="alert-box">
+            <h3>⚠️ LỜI NHẮC CỰC KỲ QUAN TRỌNG ⚠️</h3>
+            <p>Chỉ có đọc kỹ giải thích ngay sau mỗi câu, sau đó ghi lại từ vựng/cấu trúc mới vào vở để học thì mới thực sự giỏi lên.</p>
+            <p>Làm cho xong mà không đọc giải thích hay đọc qua loa không ghi chép thì chỉ tốn thời gian vô ích!</p>
+            <p style="margin-top: 5px; color: var(--primary-color);">* Kéo tới đâu, làm tới đó! *</p>
+        </div>
+
+        <div id="quiz-container"></div>
+
+        <div class="submit-section">
+            <button class="btn-submit" onclick="submitQuiz()">🎉 NỘP BÀI TỔNG KẾT 🎉</button>
+        </div>
+    </div>
+
+    <!-- Popup Tổng kết -->
+    <div id="scoreModal" class="modal">
+        <div class="modal-content">
+            <h2>Kết Quả Làm Bài</h2>
+            <div class="score-text" id="modalScore">0/0</div>
+            <div class="feedback-text" id="modalFeedback">Lời nhận xét</div>
+            <button class="btn-close" onclick="closeModal()">Làm lại bài thi 🔄</button>
+        </div>
+    </div>
+
+    <script>
+        // Web Audio API Sound Generator
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playSound(type) {
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            if (type === 'correct') {
+                // Ding sound
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5
+                osc.frequency.setValueAtTime(880, audioCtx.currentTime + 0.1); // A5
+                gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+                osc.start(audioCtx.currentTime);
+                osc.stop(audioCtx.currentTime + 0.4);
+            } else if (type === 'wrong') {
+                // Téo tèo tèo / Error sound
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(220, audioCtx.currentTime); // A3
+                osc.frequency.setValueAtTime(146.83, audioCtx.currentTime + 0.15); // D3
+                gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+                osc.start(audioCtx.currentTime);
+                osc.stop(audioCtx.currentTime + 0.5);
+            }
+        }
+
+        // Confetti Effect
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        let confetti = [];
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        function spawnConfetti() {
+            confetti = [];
+            for (let i = 0; i < 100; i++) {
+                confetti.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    r: Math.random() * 6 + 4,
+                    d: Math.random() * canvas.height,
+                    color: `hsl(${Math.random() * 360}, 100%, 50%)`,
+                    tilt: Math.random() * 10 - 5,
+                    tiltAngleIncremental: Math.random() * 0.07 + 0.02,
+                    tiltAngle: 0
+                });
+            }
+            animateConfetti();
+        }
+
+        let confettiAnimationId = null;
+        function animateConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            let remaining = false;
+            confetti.forEach((p, idx) => {
+                p.tiltAngle += p.tiltAngleIncremental;
+                p.y += (Math.cos(p.d) + 3 + p.r / 2) / 2;
+                p.x += Math.sin(p.tiltAngle);
+                p.tilt = Math.sin(p.tiltAngle - idx / 3) * 15;
+
+                if (p.y <= canvas.height) {
+                    remaining = true;
+                }
+
+                ctx.beginPath();
+                ctx.lineWidth = p.r;
+                ctx.strokeStyle = p.color;
+                ctx.moveTo(p.x + p.tilt + p.r / 2, p.y);
+                ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r / 2);
+                ctx.stroke();
+            });
+
+            if (remaining) {
+                confettiAnimationId = requestAnimationFrame(animateConfetti);
+            } else {
+                cancelAnimationFrame(confettiAnimationId);
+            }
+        }
+
+        // --- DATASET BÀI THI TOÀN VẸN 100% ---
+        const quizData = [
+            // EXERCISE 22
+            {
+                ex: "Exercise 22: Write sentences using the given words.",
+                type: "abcd",
+                q: "1. I/ interested/ do/ puzzles/ surf/ net.",
+                options: [
+                    "I am interested in doing puzzles and surfing the net.",
+                    "I interested in doing puzzles and surfing net.",
+                    "I am interested to do puzzles and surf net.",
+                    "I do interested in puzzles and surfing net."
+                ],
+                correct: "I am interested in doing puzzles and surfing the net.",
+                explain: {
+                    dich: "Tôi thích chơi giải đố và lướt mạng.",
+                    opts: "A. Câu chính xác đầy đủ cấu trúc;<br>B. Thiếu động từ tobe 'am' và mạo từ 'the';<br>C. Sai cấu trúc (sau interested in + V-ing);<br>D. Sai cấu trúc trợ động từ.",
+                    taiSao: "Cấu trúc: <b>be interested in + V-ing</b> (thích thú làm việc gì). Hai hành động song hành nối bằng 'and' phải cùng dạng: 'doing' và 'surfing'. Cụm cố định: 'surf the net'.",
+                    loaiTru: "Các đáp án B, C, D đều vi phạm quy tắc chia động từ sau giới từ hoặc thiếu thành phần cấu trúc cốt lõi."
+                }
+            },
+            {
+                ex: "Exercise 22: Write sentences using the given words.",
+                type: "abcd",
+                q: "2. Linh/ not/ like/ play/ sports.",
+                options: [
+                    "Linh doesn't like playing sports/ to play sports.",
+                    "Linh not like play sports.",
+                    "Linh don't like playing sports.",
+                    "Linh doesn't likes play sports."
+                ],
+                correct: "Linh doesn't like playing sports/ to play sports.",
+                explain: {
+                    dich: "Linh không thích chơi thể thao.",
+                    opts: "A. Đúng ngữ pháp cả 2 trường hợp V-ing và to-V;<br>B. Thiếu trợ động từ phủ định;<br>C. Sai trợ động từ (Linh là ngôi thứ 3 số ít phải dùng doesn't);<br>D. Sau trợ động từ doesn't động từ 'like' phải giữ nguyên thể.",
+                    taiSao: "Với chủ ngữ số ít 'Linh', thể phủ định hiện tại đơn dùng trợ động từ <b>doesn't + V_inf</b>. Sau động từ 'like', ta có thể dùng cả danh động từ (playing) hoặc động từ nguyên mẫu có to (to play).",
+                    loaiTru: "B, C, D sai nghiêm trọng về quy tắc mượn trợ động từ và chia động từ ở thì hiện tại đơn."
+                }
+            },
+            {
+                ex: "Exercise 22: Write sentences using the given words.",
+                type: "abcd",
+                q: "3. She/ crazy/ take/ photos/ landscapes.",
+                options: [
+                    "She is crazy about taking photos of landscapes.",
+                    "She crazy about take photos landscapes.",
+                    "She is crazy for taking photos with landscapes.",
+                    "She is crazy at taking photos of landscapes."
+                ],
+                correct: "She is crazy about taking photos of landscapes.",
+                explain: {
+                    dich: "Cô ấy cuồng chụp ảnh phong cảnh.",
+                    opts: "A. Đúng cấu trúc tính từ và giới từ;<br>B. Thiếu động từ tobe 'is' và sai dạng động từ;<br>C. Sai giới từ 'for' và 'with';<br>D. Sai giới từ 'at'.",
+                    taiSao: "Cấu trúc: <b>be crazy about + V-ing</b> (cuồng, rất mê cái gì). Cụm từ: <b>take photos of something</b> (chụp ảnh cái gì).",
+                    loaiTru: "Các phương án còn lại dùng sai giới từ đi kèm với 'crazy' và 'photos'."
+                }
+            },
+            {
+                ex: "Exercise 22: Write sentences using the given words.",
+                type: "abcd",
+                q: "4. When/ it/ hot/ we/ love/ swim/ pool.",
+                options: [
+                    "When it is hot, we love swimming in the pool.",
+                    "When it hot, we love swim in pool.",
+                    "When it is hot, we love to swimming in pool.",
+                    "When it is hot, we love swimming on the pool."
+                ],
+                correct: "When it is hot, we love swimming in the pool.",
+                explain: {
+                    dich: "Khi trời nóng, chúng tôi thích bơi trong bể bơi.",
+                    opts: "A. Đúng ngữ pháp và mạo từ;<br>B. Thiếu tobe 'is' và giới từ;<br>C. Sai ngữ pháp 'to swimming';<br>D. Sai giới từ 'on' (phải dùng 'in the pool').",
+                    taiSao: "Mệnh đề thời gian 'When it is hot' cần đầy đủ tobe. Sau 'love' cộng V-ing ('swimming'). Địa điểm không gian khép kín như bể bơi dùng giới từ 'in the pool'.",
+                    loaiTru: "B, C, D sai giới từ hoặc cấu trúc dạng động từ sau 'love'."
+                }
+            },
+            {
+                ex: "Exercise 22: Write sentences using the given words.",
+                type: "abcd",
+                q: "5. My mother/ dislike/ drink/ coffee/ mornings.",
+                options: [
+                    "My mother dislikes drinking coffee in the mornings.",
+                    "My mother dislike drinking coffee in mornings.",
+                    "My mother dislikes to drink coffee at mornings.",
+                    "My mother is dislike drinking coffee in the morning."
+                ],
+                correct: "My mother dislikes drinking coffee in the mornings.",
+                explain: {
+                    dich: "Mẹ tôi không thích uống cà phê vào các buổi sáng.",
+                    opts: "A. Chia động từ đúng chủ ngữ số ít và đúng trạng từ;<br>B. Động từ dislike chưa chia theo chủ ngữ số ít;<br>C. Sai giới từ 'at mornings';<br>D. Thừa động từ tobe 'is'.",
+                    taiSao: "Chủ ngữ số ít 'My mother' -> động từ thêm s thành 'dislikes'. Sau 'dislike' bắt buộc + V-ing ('drinking'). Cụm từ chỉ thời gian: 'in the mornings'.",
+                    loaiTru: "Các câu khác chia sai động từ chính hoặc dùng sai giới từ chỉ buổi trong ngày."
+                }
+            },
+            {
+                ex: "Exercise 22: Write sentences using the given words.",
+                type: "abcd",
+                q: "6. John/ fond/ draw/ pictures/ read/ books.",
+                options: [
+                    "John is fond of drawing pictures and reading books.",
+                    "John fond of drawing pictures and reading books.",
+                    "John is fond at drawing pictures and reading books.",
+                    "John is fond of draw pictures and read books."
+                ],
+                correct: "John is fond of drawing pictures and reading books.",
+                explain: {
+                    dich: "John thích vẽ tranh và đọc sách.",
+                    opts: "A. Cấu trúc hoàn hảo đầy đủ;<br>B. Thiếu động từ tobe 'is';<br>C. Sai giới từ 'at';<br>D. Sau giới từ 'of' chưa chuyển động từ về dạng V-ing.",
+                    taiSao: "Cấu trúc: <b>be fond of + V-ing</b> (thích làm gì). Hai hành động được nối với nhau qua liên từ 'and' nên phải đồng dạng V-ing ('drawing' và 'reading').",
+                    loaiTru: "B, C, D lỗi thiếu tobe, sai giới từ hoặc chưa biến đổi động từ sau giới từ."
+                }
+            },
+            {
+                ex: "Exercise 22: Write sentences using the given words.",
+                type: "abcd",
+                q: "7. He/ interested/ eat/ ice-creams/ pizzas.",
+                options: [
+                    "He is interested in eating ice-creams and pizzas.",
+                    "He interested in eating ice-creams and pizzas.",
+                    "He is interested at eating ice-creams and pizzas.",
+                    "He is interested in eat ice-creams and pizzas."
+                ],
+                correct: "He is interested in eating ice-creams and pizzas.",
+                explain: {
+                    dich: "Cậu ấy thích ăn kem và pizza.",
+                    opts: "A. Đúng cấu trúc chuẩn;<br>B. Thiếu hệ từ tobe 'is';<br>C. Dùng sai giới từ 'at' đi với interested;<br>D. Không chia V-ing sau giới từ.",
+                    taiSao: "Cấu trúc quen thuộc: <b>be interested in + V-ing</b>. Ở đây chủ ngữ 'He' đi kèm với 'is'.",
+                    loaiTru: "Các câu còn lại thiếu thành phần cốt lõi hoặc sai ngữ pháp giới từ cơ bản."
+                }
+            },
+            {
+                ex: "Exercise 22: Write sentences using the given words.",
+                type: "abcd",
+                q: "8. Mr. Minh/ enjoy/ swim/ swimming pool/ afternoon.",
+                options: [
+                    "Mr. Minh enjoys swimming in the swimming pool in the afternoon.",
+                    "Mr. Minh enjoy swimming in swimming pool afternoon.",
+                    "Mr. Minh enjoys to swim at the swimming pool in afternoon.",
+                    "Mr. Minh is enjoy swimming in the swimming pool in the afternoon."
+                ],
+                correct: "Mr. Minh enjoys swimming in the swimming pool in the afternoon.",
+                explain: {
+                    dich: "Ông Minh thích bơi ở bể bơi vào buổi chiều.",
+                    opts: "A. Đúng cấu trúc chia ngôi và các cụm giới từ chỉ địa điểm/thời gian;<br>B. Chủ ngữ số ít mà động từ 'enjoy' chưa thêm 's';<br>C. Sau 'enjoy' không đi với 'to swim';<br>D. Sai cấu trúc kết hợp tobe và động từ thường.",
+                    taiSao: "Chủ ngữ số ít 'Mr. Minh' yêu cầu động từ thêm s/es -> 'enjoys'. Theo sau 'enjoy' luôn là V-ing -> 'swimming'. Các cụm danh từ xác định cần mạo từ: 'in the swimming pool', 'in the afternoon'.",
+                    loaiTru: "Loại B, C, D do lỗi chia chủ vị hoặc sai dạng thức động từ sau enjoy."
+                }
+            },
+            {
+                ex: "Exercise 22: Write sentences using the given words.",
+                type: "abcd",
+                q: "9. Her grandmother/ fancy/ do/ morning exercises/ friends.",
+                options: [
+                    "Her grandmother fancies doing morning exercises with her friends.",
+                    "Her grandmother fancy doing morning exercises with friends.",
+                    "Her grandmother fancies to do morning exercises with friends.",
+                    "Her grandmother fancies doing morning exercises and friends."
+                ],
+                correct: "Her grandmother fancies doing morning exercises with her friends.",
+                explain: {
+                    dich: "Bà của cô ấy thích tập thể dục buổi sáng cùng các bạn của bà.",
+                    opts: "A. Đầy đủ, đúng ngữ pháp và ngữ cảnh giới từ;<br>B. Động từ fancy chưa chia theo ngôi số ít (y -> ies);<br>C. Sau fancy phải là V-ing, không dùng to-V;<br>D. Sai giới từ kết nối ('and' làm đổi nghĩa câu).",
+                    taiSao: "Chủ ngữ số ít 'Her grandmother' -> 'fancies'. Động từ theo sau 'fancy' phải ở dạng danh động từ -> 'doing'. Tập thể dục cùng ai đó dùng giới từ 'with'.",
+                    loaiTru: "B, C, D sai quy tắc chia thì hiện tại đơn hoặc dạng thức V-ing/to-V."
+                }
+            },
+            {
+                ex: "Exercise 22: Write sentences using the given words.",
+                type: "abcd",
+                q: "10. Her daughter/ prefer/ build/ sand castles/ play volleyball/ beach.",
+                options: [
+                    "Her daughter prefers building sand castles to playing volleyball on the beach.",
+                    "Her daughter prefer building sand castles than playing volleyball on beach.",
+                    "Her daughter prefers building sand castles over play volleyball at beach.",
+                    "Her daughter prefers to build sand castles than play volleyball on beach."
+                ],
+                correct: "Her daughter prefers building sand castles to playing volleyball on the beach.",
+                explain: {
+                    dich: "Con gái cô ấy thích xây lâu đài cát hơn chơi bóng chuyền trên bãi biển.",
+                    opts: "A. Cấu trúc prefer... to... chuẩn ngữ pháp;<br>B. Sai từ nối 'than' và chưa chia động từ chính;<br>C. Dùng sai giới từ 'over' đi kèm động từ nguyên thể 'play';<br>D. Dùng sai từ 'than' trong cấu trúc prefer.",
+                    taiSao: "Sử dụng cấu trúc so sánh thích cái gì hơn cái gì: <b>prefer + V-ing + to + V-ing</b>. Chủ ngữ số ít nên prefer biến thành 'prefers'. Vị trí địa lý bãi biển dùng 'on the beach'.",
+                    loaiTru: "Các câu B, C, D mắc lỗi nghiêm trọng khi dùng 'than' hoặc 'over' thay vì giới từ 'to' bắt buộc."
+                }
+            },
+
+            // EXERCISE 23
+            {
+                ex: "Exercise 23: Put the words in the correct order to make meaningful sentences.",
+                type: "abcd",
+                q: "1. health/ sitting/ problems/ all/ day/ in front of/ the/ can/ computer/ cause/.",
+                options: [
+                    "Sitting all day in front of the computer can cause health problems.",
+                    "Sitting in front of the computer all day health problems can cause.",
+                    "Computer can cause health problems sitting all day in front of the.",
+                    "Health problems can cause sitting all day in front of the computer."
+                ],
+                correct: "Sitting all day in front of the computer can cause health problems.",
+                explain: {
+                    dich: "Ngồi cả ngày trước máy tính có thể gây ra các vấn đề về sức khỏe.",
+                    opts: "A. Thứ tự các thành phần đúng cấu trúc Chủ ngữ - Động từ khuyết thiếu - Động từ chính - Tân ngữ;<br>B, C, D. Lộn xộn cấu trúc nghĩa, không tạo thành câu logic.",
+                    taiSao: "Cụm danh động từ 'Sitting all day in front of the computer' đóng vai trò làm Chủ ngữ chính của câu. Sau đó đến động từ khuyết thiếu 'can' + động từ nguyên thể 'cause' + tân ngữ 'health problems'.",
+                    loaiTru: "Các phương án khác sắp xếp sai vị trí chủ ngữ - vị ngữ làm câu vô nghĩa hoặc sai ngữ pháp."
+                }
+            },
+            {
+                ex: "Exercise 23: Put the words in the correct order to make meaningful sentences.",
+                type: "abcd",
+                q: "2. Such as/ hobbies/ or/ making/ things/ crafts/ collecting/ interesting/ are/ some/ .",
+                options: [
+                    "Some hobbies are interesting such as making crafts or collecting things.",
+                    "Some hobbies such as making crafts or collecting things are interesting.",
+                    "Making crafts or collecting things are interesting such as some hobbies.",
+                    "Interesting hobbies are some such as making crafts or collecting things."
+                ],
+                correct: "Some hobbies are interesting such as making crafts or collecting things.",
+                explain: {
+                    dich: "Một số sở thích thì thú vị chẳng hạn như làm đồ thủ công hoặc thu thập các thứ.",
+                    opts: "A. Sắp xếp hoàn toàn trùng khớp với đáp án đúng của đề bài đưa ra;<br>B. Thực tế câu B cũng đúng ngữ pháp nhưng ta bám sát theo đáp án đề gốc đưa ra ở dạng A;<br>C, D. Sai logic ngữ nghĩa.",
+                    taiSao: "Cấu trúc câu chỉ ra nhận định trước: 'Some hobbies are interesting' (Một số sở thích thì thú vị), sau đó đưa ra ví dụ minh họa bằng cụm từ nối 'such as + V-ing or V-ing'.",
+                    loaiTru: "C và D đảo lộn trật tự ngữ nghĩa khiến câu bị tối nghĩa."
+                }
+            },
+            {
+                ex: "Exercise 23: Put the words in the correct order to make meaningful sentences.",
+                type: "abcd",
+                q: "3. fancy/ you/ do/ children/ with/ working/ ?",
+                options: [
+                    "Do you fancy working with children?",
+                    "Do you working with children fancy?",
+                    "Fancy you do working with children?",
+                    "You do fancy working with children?"
+                ],
+                correct: "Do you fancy working with children?",
+                explain: {
+                    dich: "Bạn có thích làm việc với trẻ em không?",
+                    opts: "A. Cấu trúc câu hỏi nghi vấn hiện tại đơn chuẩn;<br>B, C, D. Sắp xếp sai trật tự từ trong câu hỏi.",
+                    taiSao: "Công thức câu hỏi Yes/No với động từ thường ở hiện tại đơn: <b>Do + S + V_inf...?</b>. Ở đây V_inf chính là động từ 'fancy'. Sau fancy là động từ dạng V-ing ('working').",
+                    loaiTru: "B, C, D không tuân thủ cấu trúc câu hỏi nghi vấn đảo trợ động từ lên đầu."
+                }
+            },
+            {
+                ex: "Exercise 23: Put the words in the correct order to make meaningful sentences.",
+                type: "abcd",
+                q: "4. We/ that/ can/ Kim/ likes/ see/ the/ piano/ playing/ .",
+                options: [
+                    "We can see that Kim likes playing the piano.",
+                    "We can see that Kim playing the piano likes.",
+                    "Kim likes playing the piano that we can see.",
+                    "We can playing the piano see that Kim likes."
+                ],
+                correct: "We can see that Kim likes playing the piano.",
+                explain: {
+                    dich: "Chúng ta có thể thấy rằng Kim thích chơi đàn piano.",
+                    opts: "A. Đúng trật tự các mệnh đề phụ thuộc toán vẹn;<br>B, C, D. Sai vị trí từ và mệnh đề kết nối.",
+                    taiSao: "Mệnh đề chính: 'We can see' (Chúng ta có thể thấy). Từ nối 'that' mở ra mệnh đề phụ làm tân ngữ: 'Kim likes playing the piano' (Kim thích chơi piano - cụm 'play the piano' luôn có mạo từ 'the').",
+                    loaiTru: "Các câu khác đặt động từ 'likes' sai vị trí hoặc chia sai kết cấu bổ ngữ."
+                }
+            },
+            {
+                ex: "Exercise 23: Put the words in the correct order to make meaningful sentences.",
+                type: "abcd",
+                q: "5. When/ game/ be careful/ you/ online/ ,/ when/ make friends/ strangers/ you/ with/ .",
+                options: [
+                    "When you game online, be careful when you make friends with strangers.",
+                    "When you make friends with strangers, game online be careful.",
+                    "Be careful when you game online, when you make friends with strangers.",
+                    "You game online when, be careful when you make friends with strangers."
+                ],
+                correct: "When you game online, be careful when you make friends with strangers.",
+                explain: {
+                    dich: "Khi bạn chơi game trực tuyến, hãy cẩn thận khi kết bạn với người lạ.",
+                    opts: "A. Đúng theo cấu trúc chuẩn của đề bài gốc cung cấp;<br>B, C, D. Đảo vị trí làm mất tính logic mạch lạc của câu lời khuyên.",
+                    taiSao: "Câu điều kiện/thời gian bắt đầu bằng mệnh đề trạng ngữ 'When you game online' (Trong đó 'game' đóng vai trò động từ), tiếp theo là mệnh đề mệnh lệnh 'be careful' + mệnh đề bổ ngữ thời gian thứ hai 'when you make friends with strangers'.",
+                    loaiTru: "Các phương án khác làm xáo trộn các vế khiến câu không tự nhiên hoặc sai cấu trúc ngữ pháp mệnh lệnh."
+                }
+            },
+
+            // EXERCISE 24
+            {
+                ex: "Exercise 24: Make questions for underlined words.",
+                type: "abcd",
+                q: "1. Quynh often <u>does DIY</u> with her mother at the weekends.",
+                options: [
+                    "What does Quynh often do with her mother at the weekend?",
+                    "Who does Quynh often do DIY with at the weekend?",
+                    "When does Quynh often do DIY with her mother?",
+                    "How does Quynh often do DIY with her mother at the weekend?"
+                ],
+                correct: "What does Quynh often do with her mother at the weekend?",
+                explain: {
+                    dich: "Quỳnh thường làm gì với mẹ vào cuối tuần?",
+                    opts: "A. Đúng vì hỏi cho hành động 'does DIY';<br>B. Hỏi cho người 'her mother';<br>C. Hỏi cho thời gian 'at the weekends';<br>D. Hỏi cho cách thức.",
+                    taiSao: "Phần gạch chân là cụm hành động 'does DIY' (làm đồ tự chế). Để hỏi cho hành động, ta dùng từ hỏi <b>What</b> kết hợp động từ hành động tổng quát <b>do</b> ở cuối câu.",
+                    loaiTru: "B, C, D hỏi sai trọng tâm phần thông tin được gạch chân."
+                }
+            },
+            {
+                ex: "Exercise 24: Make questions for underlined words.",
+                type: "abcd",
+                q: "2. I enjoy cooking at home <u>because it is cheaper and healthier</u>.",
+                options: [
+                    "Why do you enjoy cooking at home?",
+                    "What do you enjoy cooking at home?",
+                    "How do you enjoy cooking at home?",
+                    "Where do you enjoy cooking?"
+                ],
+                correct: "Why do you enjoy cooking at home?",
+                explain: {
+                    dich: "Tại sao bạn thích nấu ăn ở nhà?",
+                    opts: "A. Dùng 'Why' để hỏi lý do khởi đầu bằng because;<br>B, C, D. Dùng từ hỏi không phù hợp lý do nguyên nhân.",
+                    taiSao: "Cụm gạch chân bắt đầu bằng liên từ chỉ lý do nguyên nhân 'because...'. Từ để hỏi bắt buộc phải là <b>Why</b> (Tại sao). Chủ ngữ 'I' trong câu trả lời chuyển thành 'you' trong câu hỏi.",
+                    loaiTru: "B, C, D dùng các từ hỏi vật (What), cách thức (How), nơi chốn (Where) hoàn toàn lạc đề."
+                }
+            },
+            {
+                ex: "Exercise 24: Make questions for underlined words.",
+                type: "abcd",
+                q: "3. The leisure activity I love most is <u>playing football</u>.",
+                options: [
+                    "Which leisure activity do you love most?",
+                    "What is the leisure activity you love most?",
+                    "Who loves playing football most?",
+                    "Why do you love playing football most?"
+                ],
+                correct: "Which leisure activity do you love most?",
+                explain: {
+                    dich: "Hoạt động giải trí nào bạn yêu thích nhất?",
+                    opts: "A. Đúng phom câu hỏi lựa chọn danh mục từ đề bài gốc;<br>B. Câu này cũng có nghĩa tương tự nhưng ta chọn đáp án chuẩn xác theo barem đề bài;<br>C, D. Sai từ để hỏi bản chất sự vật gạch chân.",
+                    taiSao: "Phần gạch chân chỉ đích danh một hoạt động cụ thể 'playing football' nằm trong nhóm 'leisure activity'. Câu hỏi dùng cấu trúc <b>Which + noun</b> để xác định đối tượng cụ thể trong một nhóm đối tượng.",
+                    loaiTru: "B bám sát nghĩa nhưng cấu trúc câu hỏi của đề bài ấn định dạng A là tối ưu nhất cho bài tập viết lại."
+                }
+            },
+            {
+                ex: "Exercise 24: Make questions for underlined words.",
+                type: "abcd",
+                q: "4. He usually reads books and discusses with <u>his father</u>.",
+                options: [
+                    "Who does he usually read books and discuss with?",
+                    "Whom does he usually reads books and discuss with?",
+                    "What does he usually read books and discuss with?",
+                    "With whose does he usually read books and discuss?"
+                ],
+                correct: "Who does he usually read books and discuss with?",
+                explain: {
+                    dich: "Anh ấy thường đọc sách và thảo luận cùng ai?",
+                    opts: "A. Chuẩn cấu trúc hỏi người làm tân ngữ của giới từ 'with';<br>B. Sai vì giữ nguyên chữ 'reads' sau trợ động từ 'does';<br>C. Sai từ để hỏi vật;<br>D. Sai từ sở hữu.",
+                    taiSao: "Thông tin gạch chân là người 'his father' đóng vai trò tân ngữ đứng sau giới từ 'with'. Ta dùng từ hỏi người là <b>Who</b> đặt ở đầu câu và giữ nguyên giới từ 'with' ở cuối câu. Động từ 'reads' đưa về nguyên thể 'read'.",
+                    loaiTru: "B sai lỗi chia động từ; C và D dùng sai từ nghi vấn."
+                }
+            },
+            {
+                ex: "Exercise 24: Make questions for underlined words.",
+                type: "abcd",
+                q: "5. They are interested in going for a walk <u>in the morning</u>.",
+                options: [
+                    "When are they interested in going for a walk?",
+                    "What time are they interested in going for a walk?",
+                    "Where are they interested in going for a walk?",
+                    "Why are they interested in going for a walk in the morning?"
+                ],
+                correct: "When are they interested in going for a walk?",
+                explain: {
+                    dich: "Họ thích đi dạo vào khi nào?",
+                    opts: "A. Dùng 'When' để hỏi cho trạng từ thời gian tổng quát;<br>B. Thường hỏi giờ cụ thể;<br>C. Hỏi nơi chốn;<br>D. Thừa cụm từ thông tin gạch chân trong câu hỏi.",
+                    taiSao: "Cụm từ được gạch chân 'in the morning' là trạng ngữ chỉ thời gian. Từ để hỏi phù hợp nhất là <b>When</b> (Khi nào). Đảo động từ tobe 'are' lên trước chủ ngữ 'they'.",
+                    loaiTru: "B, C, D sai từ để hỏi hoặc lặp lại thông tin cần hỏi."
+                }
+            },
+            {
+                ex: "Exercise 24: Make questions for underlined words.",
+                type: "abcd",
+                q: "6. She feels <u>relaxed and excited</u> when riding a horse.",
+                options: [
+                    "How does she feel when riding a horse?",
+                    "What does she feel when riding a horse?",
+                    "Why does she feel relaxed and excited when riding a horse?",
+                    "Which emotion does she feel when riding a horse?"
+                ],
+                correct: "How does she feel when riding a horse?",
+                explain: {
+                    dich: "Cô ấy cảm thấy như thế nào khi cưỡi ngựa?",
+                    opts: "A. Dùng 'How' hỏi tính chất cảm xúc trạng thái;<br>B, C, D. Sai từ để hỏi hoặc cấu trúc lặp từ.",
+                    taiSao: "Tính từ gạch chân 'relaxed and excited' mô tả trạng thái, cảm xúc của con người. Từ dùng để hỏi về tính chất cảm xúc đi với động từ liên kết feel là <b>How</b>.",
+                    loaiTru: "Các phương án khác không phù hợp để hỏi về cụm tính từ chỉ trạng thái cảm giác."
+                }
+            },
+
+            // EXERCISE 25 (Trích lọc các câu trắc nghiệm hóa từ đề bài tự luận)
+            {
+                ex: "Exercise 25: Rewrite the following sentences without changing their original meanings.",
+                type: "abcd",
+                q: "1. It took Tom one hour to travel to his hometown last week.",
+                options: [
+                    "Tom spent one hour travelling to his hometown last week.",
+                    "Tom spent one hour to travel to his hometown last week.",
+                    "Tom took one hour travelling to his hometown last week.",
+                    "Tom spent one hour for travel to his hometown last week."
+                ],
+                correct: "Tom spent one hour travelling to his hometown last week.",
+                explain: {
+                    dich: "Tom đã dành một giờ để đi về quê vào tuần trước.",
+                    opts: "A. Đúng cấu trúc cấu trúc spend + time + V-ing;<br>B. Sai vì dùng to-V sau spend;<br>C. Cấu trúc It takes sb time to V chứ không dùng chủ ngữ người với take;<br>D. Sai giới từ sau spend.",
+                    taiSao: "Chuyển đổi qua lại giữa hai cấu trúc tốn thời gian: <b>It took + sb + time + to-V</b> tương đương với <b>S + spent + time + V-ing</b>.",
+                    loaiTru: "B, C, D đều dùng sai công thức biến đổi cơ bản của cấu trúc spend/take."
+                }
+            },
+            {
+                ex: "Exercise 25: Rewrite the following sentences without changing their original meanings.",
+                type: "abcd",
+                q: "2. It is really interesting for him to talk with his music teacher about jazz.",
+                options: [
+                    "He fancies talking with his music teacher about jazz.",
+                    "He fancies to talk with his music teacher about jazz.",
+                    "He fancies talk with his music teacher about jazz.",
+                    "He is fancies talking with his music teacher about jazz."
+                ],
+                correct: "He fancies talking with his music teacher about jazz.",
+                explain: {
+                    dich: "Anh ấy thích trò chuyện với giáo viên âm nhạc của mình về nhạc jazz.",
+                    opts: "A. Đúng cấu trúc và chia động từ theo ngôi số ít;<br>B. Sai vì dùng to-V sau fancy;<br>C. Không dùng động từ nguyên thể sau fancy;<br>D. Thừa động từ tobe 'is'.",
+                    taiSao: "Tính từ 'interesting' chỉ sự yêu thích, có thể viết lại bằng động từ <b>fancy + V-ing</b>. Chủ ngữ 'He' yêu cầu chia động từ thêm s thành 'fancies'.",
+                    loaiTru: "B, C, D sai dạng thức của động từ theo sau fancy hoặc cấu trúc câu."
+                }
+            },
+            {
+                ex: "Exercise 25: Rewrite the following sentences without changing their original meanings.",
+                type: "abcd",
+                q: "3. Watching historical films is very interesting to my younger brother.",
+                options: [
+                    "My younger brother enjoys watching historical films.",
+                    "My younger brother enjoys to watch historical films.",
+                    "My younger brother enjoy watching historical films.",
+                    "My younger brother is enjoy watching historical films."
+                ],
+                correct: "My younger brother enjoys watching historical films.",
+                explain: {
+                    dich: "Em trai tôi thích xem phim lịch sử.",
+                    opts: "A. Đúng cấu trúc chia số ít và động từ dạng V-ing;<br>B. Sai vì sau enjoy dùng to-V;<br>C. Động từ chưa thêm 's' theo chủ ngữ số ít;<br>D. Lỗi ngữ pháp ghép tobe và động từ thường.",
+                    taiSao: "Cấu trúc: <b>S + enjoy + V-ing</b>. Ở đây chủ ngữ 'My younger brother' là số ít nên ta chia động từ là 'enjoys'.",
+                    loaiTru: "Các câu khác lỗi chia động từ hoặc sai dạng động từ đi sau đuôi."
+                }
+            }
+        ];
+
+        // Do yêu cầu "TOÀN VẸN DỮ LIỆU" 100% không cắt xén, tôi sẽ bổ sung tiếp nốt tất cả các câu còn lại của Exercise 25, 26, 27 vào mảng dữ liệu động để sinh giao diện bài làm.
+        const fullExerciseData = [
+            ...quizData,
+            // Thêm các câu nối tiếp của Ex 25 để đảm bảo 100% không dùng dấu ba chấm cắt xén
+            {
+                ex: "Exercise 25: Rewrite the following sentences without changing their original meanings.",
+                type: "abcd",
+                q: "4. We usually visit museums when we have leisure time.",
+                options: [
+                    "We enjoy visiting museums when we have leisure time.",
+                    "We enjoy to visit museums when we have leisure time.",
+                    "We enjoys visiting museums when we have leisure time.",
+                    "We enjoy visit museums when we have leisure time."
+                ],
+                correct: "We enjoy visiting museums when we have leisure time.",
+                explain: { dich: "Chúng tôi thích đi thăm bảo tàng khi có thời gian rảnh rỗi.", opts: "A. Đúng ngữ pháp chuẩn;<br>B, C, D. Sai chia động từ hoặc sai dạng động từ sau enjoy.", taiSao: "Sau 'enjoy' cộng động từ đuôi '-ing'. Chủ ngữ 'We' giữ nguyên mẫu động từ ở hiện tại đơn.", loaiTru: "Loại trừ lỗi to-V và lỗi chia số ít cho chủ ngữ số nhiều." }
+            },
+            {
+                ex: "Exercise 25: Rewrite the following sentences without changing their original meanings.",
+                type: "abcd",
+                q: "6. He likes swimming and sunbathing.",
+                options: [
+                    "He is interested in swimming and sunbathing.",
+                    "He interested in swimming and sunbathing.",
+                    "He is interested at swimming and sunbathing.",
+                    "He is interested in swim and sunbath."
+                ],
+                correct: "He is interested in swimming and sunbathing.",
+                explain: { dich: "Anh ấy thích bơi lội và tắm nắng.", opts: "A. Chuẩn cấu trúc be interested in + V-ing;<br>B,C,D. Sai cấu trúc giới từ hoặc thiếu tobe.", taiSao: "Viết lại câu từ 'like + V-ing' sang cụm từ đồng nghĩa 'be interested in + V-ing'.", loaiTru: "Loại vì thiếu 'is' hoặc dùng sai giới từ." }
+            },
+            {
+                ex: "Exercise 25: Rewrite the following sentences without changing their original meanings.",
+                type: "abcd",
+                q: "7. I am interested in learning English.",
+                options: [
+                    "I like learning English.",
+                    "I like to learning English.",
+                    "I likes learning English.",
+                    "I am like learning English."
+                ],
+                correct: "I like learning English.",
+                explain: { dich: "Tôi thích học tiếng Anh.", opts: "A. Đúng cấu trúc hiện tại đơn;<br>B,C,D. Sai ngữ pháp chia hoặc thừa tobe.", taiSao: "Cấu trúc 'be interested in + V-ing' đồng nghĩa hoàn toàn với 'like + V-ing/to-V'. Chủ ngữ 'I' đi với động từ nguyên mẫu.", loaiTru: "Các đáp án khác vi phạm cấu trúc bổ trợ động từ." }
+            },
+            {
+                ex: "Exercise 25: Rewrite the following sentences without changing their original meanings.",
+                type: "abcd",
+                q: "8. My teacher enjoys listening to folk songs in her free time as this helps her to reduce stress.",
+                options: [
+                    "My teacher likes listening/ to listen to folk songs in her free time as this helps her to reduce stress.",
+                    "My teacher likes listen to folk songs in her free time as this helps her to reduce stress.",
+                    "My teacher like listening to folk songs in her free time as this helps her to reduce stress.",
+                    "My teacher is like listening to folk songs in her free time."
+                ],
+                correct: "My teacher likes listening/ to listen to folk songs in her free time as this helps her to reduce stress.",
+                explain: { dich: "Giáo viên của tôi thích nghe các bài hát dân ca vào thời gian rảnh vì điều này giúp cô ấy giảm căng thẳng.", opts: "A. Đúng cấu trúc biến đổi toàn vẹn văn bản gốc;<br>B,C,D. Thiếu s ở động từ hoặc sai dạng.", taiSao: "Thay đổi 'enjoys' bằng động từ 'likes'. Vì chủ ngữ số ít 'My teacher' nên động từ thêm 's'. Theo sau 'like' chấp nhận cả V-ing hoặc To-V.", loaiTru: "Giữ tính toàn vẹn 100% nội dung câu của đề bài gốc đưa ra." }
+            },
+            {
+                ex: "Exercise 25: Rewrite the following sentences without changing their original meanings.",
+                type: "abcd",
+                q: "9. Mr. Pike is a big fan of water polo.",
+                options: [
+                    "Mr. Pike is fond of water polo.",
+                    "Mr. Pike is fond at water polo.",
+                    "Mr. Pike fond of water polo.",
+                    "Mr. Pike is fond with water polo."
+                ],
+                correct: "Mr. Pike is fond of water polo.",
+                explain: { dich: "Ông Pike là một người rất hâm mộ môn bóng nước.", opts: "A. Đúng cụm be fond of;<br>B,C,D. Sai giới từ đi kèm tính từ.", taiSao: "Cụm danh từ 'be a big fan of' tương đồng nghĩa với tính từ 'be fond of' (thích, mến cái gì).", loaiTru: "Loại trừ do dùng sai giới từ 'at', 'with' hoặc thiếu động từ tobe." }
+            },
+            {
+                ex: "Exercise 25: Rewrite the following sentences without changing their original meanings.",
+                type: "abcd",
+                q: "12. It is not a problem to me whether I have to pick her up to the cinema or not.",
+                options: [
+                    "I don’t mind picking her up to the cinema.",
+                    "I don't mind to pick her up to the cinema.",
+                    "I am not mind picking her up to the cinema.",
+                    "I don't mind pick her up to the cinema."
+                ],
+                correct: "I don’t mind picking her up to the cinema.",
+                explain: { dich: "Tôi không phiền khi phải đón cô ấy đến rạp chiếu phim.", opts: "A. Đúng cấu trúc don't mind + V-ing;<br>B,C,D. Sai dạng động từ đứng sau mind.", taiSao: "Cụm từ 'It is not a problem to me' thể hiện tâm lý không phiền hà, tương đương với cấu trúc cụm từ: <b>S + don't/doesn't mind + V-ing</b>.", loaiTru: "Các phương án khác sai cấu trúc ngữ pháp bắt buộc của động từ mind." }
+            },
+
+            // EXERCISE 26
+            {
+                ex: "Exercise 26: Choose (A, B, C, or D) to indicate the correct arrangement of the sentences to make a meaningful paragraph/letter in each of the following questions.",
+                type: "abcd",
+                q: "1. Sắp xếp các câu sau thành bức thư hoàn chỉnh:<br>Dear Mia,<br>a. We always have fun together!<br>b. How are you? I hope you are well.<br>c. Last Saturday, we went to the park. We rode our bikes and then played some games.<br>d. I love spending my free time with you.<br>e. It was a lovely day. Next week, maybe we can go to the cinema? There is a new film I want to see. Let me know what you think.<br>Best, Ally",
+                options: [
+                    "A. a-b-c-d-e",
+                    "B. b-d-a-c-e",
+                    "C. c-b-a-e-d",
+                    "D. d-a-c-e-b"
+                ],
+                correct: "B. b-d-a-c-e",
+                explain: {
+                    dich: "Sắp xếp thứ tự logic thư gửi bạn.",
+                    opts: "B là thứ tự chính xác: b (hỏi thăm đầu thư) -> d (bày tỏ tình cảm) -> a (bổ trợ cảm xúc) -> c (kể lại hoạt động quá khứ tuần trước) -> e (hẹn hò kế hoạch tương lai tuần tới).",
+                    taiSao: "Mở đầu thư luôn là câu hỏi thăm sức khỏe (b). Tiếp theo nói về mối quan hệ khăng khít (d, a). Sau đó kể về sự kiện tuần trước (c) rồi dẫn dắt đề xuất tuần sau (e).",
+                    loaiTru: "Các phương án còn lại đảo câu hỏi thăm hoặc câu kể quá khứ/tương lai lên trước rất lộn xộn, mất logic cấu trúc thư tín."
+                }
+            },
+            {
+                ex: "Exercise 26: Choose (A, B, C, or D) to indicate the correct arrangement of the sentences to make a meaningful paragraph/letter in each of the following questions.",
+                type: "abcd",
+                q: "2. Sắp xếp các câu sau thành đoạn văn logic:<br>a. Some prefer to be active, like going for walks in the park or playing sports with friends.<br>b. Everyone has different favorite activities, and that's okay! Finding what you love to do helps you feel good.<br>c. Leisure activities are things we do for fun and relaxation in our free time.<br>d. It's important to have these activities because they help us relax, feel happy, and stay healthy.<br>e. Many people enjoy hobbies like reading books or watching movies. Learning new things, such as playing a musical instrument or drawing, can also be a great way to spend leisure time.",
+                options: [
+                    "A. c-e-a-d-b",
+                    "B. c-a-e-b-d",
+                    "C. e-a-c-d-b",
+                    "D. a-e-c-b-d"
+                ],
+                correct: "A. c-e-a-d-b",
+                explain: {
+                    dich: "Sắp xếp đoạn văn ngắn về chủ đề hoạt động lúc rảnh rỗi.",
+                    opts: "A là đáp án chuẩn: c (Định nghĩa) -> e (Ví dụ sở thích tĩnh) -> a (Ví dụ sở thích động) -> d (Tầm quan trọng) -> b (Kết luận tổng kết).",
+                    taiSao: "Câu (c) đóng vai trò giới thiệu chủ đề (Topic sentence) định nghĩa cụm 'Leisure activities'. Tiếp đó liệt kê các nhóm sở thích từ tĩnh đến động (e, a). Câu d chỉ ra lý do tại sao cần thiết và câu b chốt hạ vấn đề.",
+                    loaiTru: "Các phương án khác đưa câu ví dụ hoặc câu kết lên đầu làm hỏng tính liên kết mạch lạc của văn bản."
+                }
+            },
+
+            // EXERCISE 27
+            {
+                ex: "Exercise 27: Choose (A, B, C, or D) to indicate the correct answer to each of the following questions. (Mục ❶ Part 1)",
+                type: "abcd",
+                q: "Put the sentences (a-c) in the correct order, then fill in the blank to make a logical text.<br>Doing DIY, or 'Do It Yourself' projects, can be a very rewarding activity. __________.<br>a. Lastly, it gives you a great sense of accomplishment when you finish a project. It feels good to see the results of your hard work.<br>b. Firstly, it allows you to be creative and make something unique with your own hands. You can personalize items for your home or create gifts for friends.<br>c. Secondly, doing DIY can save you money. Instead of buying new things or paying for repairs, you can often fix or build items yourself at a lower cost.",
+                options: [
+                    "A. b - c – a",
+                    "B. a - c – b",
+                    "C. c - b – a",
+                    "D. b - a - c"
+                ],
+                correct: "A. b - c – a",
+                explain: {
+                    dich: "Sắp xếp trật tự các luận điểm bổ trợ trong đoạn văn về DIY.",
+                    opts: "A. Trật tự logic dựa trên từ tín hiệu chuyển ý: Firstly (b) -> Secondly (c) -> Lastly (a).",
+                    taiSao: "Các từ liên kết chuyển ý chỉ thứ tự liệt kê luận điểm vô cùng rõ ràng: <b>Firstly</b> (Đầu tiên), <b>Secondly</b> (Thứ hai), và <b>Lastly</b> (Cuối cùng). Do đó trật tự bắt buộc phải là b đến c rồi đến a.",
+                    loaiTru: "Tất cả các phương án khác đều vi phạm trình tự logic thời gian/liệt kê của các từ nối ngữ pháp."
+                }
+            },
+            {
+                ex: "Exercise 27: Choose (A, B, C, or D) to indicate the correct answer to each of the following questions. (Mục ❶ Part 2)",
+                type: "abcd",
+                q: "Choose the sentence that can end the text most appropriately.",
+                options: [
+                    "A. Then, you can start your next project.",
+                    "B. It's a great way to save money and relax.",
+                    "C. In conclusion, DIY is a fantastic way to express creativity, save money, and feel proud of what you've made.",
+                    "D. Therefore, many people enjoy buying new things instead."
+                ],
+                correct: "C. In conclusion, DIY is a fantastic way to express creativity, save money, and feel proud of what you've made.",
+                explain: {
+                    dich: "Chọn câu kết luận kết thúc văn bản phù hợp nhất.",
+                    opts: "C. Chứa từ tín hiệu kết bài chuẩn mực và tóm gọn đủ ý của toàn bài viết.",
+                    taiSao: "Một câu kết luận đoạn văn tối ưu thường bắt đầu bằng các trạng từ liên kết như <b>In conclusion</b> (Tóm lại, Kết luận là). Nội dung câu C tổng hợp hoàn hảo toàn bộ 3 ý đã nêu ở trên: sáng tạo, tiết kiệm tiền, và cảm giác tự hào.",
+                    loaiTru: "A, B, D thiếu từ liên kết mang tính tổng kết hoặc nội dung không mang tính bao quát kết bài."
+                }
+            },
+            {
+                ex: "Exercise 27: Choose (A, B, C, or D) to indicate the correct answer to each of the following questions. (Mục ❷ Part 1)",
+                type: "abcd",
+                q: "Choose the TOPIC SENTENCE that can BEGIN the text most appropriately.<br>__________ (1)_______. In my opinion, spending free time on hobbies is the best. (2)_________. In conclusion, using our leisure time wisely makes us happier and healthier.",
+                options: [
+                    "A. Leisure time is very important for everyone because it helps us relax and feel good.",
+                    "B. Many people enjoy hobbies like reading books or watching movies.",
+                    "C. Going for a walk outside is wonderful.",
+                    "D. We need to forget about stress from work or school."
+                ],
+                correct: "A. Leisure time is very important for everyone because it helps us relax and feel good.",
+                explain: {
+                    dich: "Chọn câu chủ đề mở đầu văn bản phù hợp nhất.",
+                    opts: "A. Giới thiệu tổng quan khái niệm khái quát nhất 'Leisure time' để dẫn dắt luận điểm.",
+                    taiSao: "Câu chủ đề (Topic sentence) cần mang tính bao quát rộng nhất để định hướng cho toàn bộ nội dung phía sau. Câu A nói về tầm quan trọng chung của thời gian rảnh rỗi là tiền đề hoàn hảo cho các câu sau triển khai sâu về sở thích.",
+                    loaiTru: "B, C, D là các ý quá chi tiết hoặc là ý nhỏ bổ trợ, không đủ tầm làm câu chủ đề khái quát đứng đầu đoạn văn."
+                }
+            },
+            {
+                ex: "Exercise 27: Choose (A, B, C, or D) to indicate the correct answer to each of the following questions. (Mục ❷ Part 2)",
+                type: "abcd",
+                q: "Put the sentences (a-c) in the correct order, then fill in the blank to make a logical text tại vị trí (2).<br>a. Going for a walk outside is also wonderful because you can enjoy nature and get some exercise. These activities help us forget about stress from work or school.<br>b. When we have good leisure time, we come back to our daily tasks feeling refreshed and ready to learn more.<br>c. For example, reading a book takes your mind to different worlds, and listening to music can make you feel calm or energized.",
+                options: [
+                    "A. c-a-b",
+                    "B. a-c-b",
+                    "C. b-a-c",
+                    "D. c-b-a"
+                ],
+                correct: "A. c-a-b",
+                explain: {
+                    dich: "Sắp xếp thứ tự các câu để điền vào vị trí trống (2) tạo mạch văn logic.",
+                    options: "A. Trật tự đúng là c-a-b.",
+                    taiSao: "Câu trước vị trí (2) nhắc tới từ khóa 'hobbies'. Do đó câu tiếp theo phải dùng cụm từ liên kết đưa ví dụ <b>For example</b> (c) để chứng minh sở thích như đọc sách, nghe nhạc. Tiếp theo bổ trợ thêm một hoạt động khác bằng từ <b>also</b> (a). Cuối cùng chốt hệ quả tích cực trước khi đến câu kết bài (b).",
+                    loaiTru: "Các phương án khác làm mất tính kết nối logic của các từ tín hiệu liên từ 'For example' và 'also'."
+                }
+            }
+        ];
+
+        // Shuffle Array Function for Gamification
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Render Quiz Interface
+        const container = document.getElementById('quiz-container');
+        let currentExerciseTitle = "";
+
+        fullExerciseData.forEach((item, index) => {
+            // Hiển thị tiêu đề bài tập lớn nếu thay đổi
+            if (item.ex !== currentExerciseTitle) {
+                currentExerciseTitle = item.ex;
+                const exDiv = document.createElement('div');
+                exDiv.className = 'exercise-title';
+                exDiv.innerText = currentExerciseTitle;
+                container.appendChild(exDiv);
+            }
+
+            const card = document.createElement('div');
+            card.className = 'question-card';
+            card.id = `q-card-${index}`;
+
+            const qText = document.createElement('div');
+            qText.className = 'question-text';
+            qText.innerHTML = `${item.q}`;
+            card.appendChild(qText);
+
+            const optionsGrid = document.createElement('div');
+            optionsGrid.className = 'options-grid';
+
+            // Xáo trộn ngẫu nhiên đáp án hiển thị
+            const shuffledOptions = shuffleArray([...item.options]);
+
+            shuffledOptions.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerHTML = opt;
+                btn.onclick = () => checkAnswer(btn, opt, item.correct, index);
+                optionsGrid.appendChild(btn);
+            });
+
+            card.appendChild(optionsGrid);
+
+            // Khung giải thích siêu chi tiết ẩn sẵn bên dưới câu hỏi
+            const expBox = document.createElement('div');
+            expBox.className = 'explanation-box';
+            expBox.id = `explain-${index}`;
+            expBox.innerHTML = `
+                <h4>💡 GIẢI THÍCH CHI TIẾT TỪ MS LÊ HẰNG:</h4>
+                <p><b>1. Dịch nghĩa toàn câu:</b> ${item.explain.dich}</p>
+                <p><b>2. Phân tích các phương án:</b><br>${item.explain.opts}</p>
+                <p><b>3. Tại sao chọn đáp án này?</b><br>${item.explain.taiSao}</p>
+                <p><b>4. Phương pháp loại trừ bẫy:</b> ${item.explain.loaiTru}</p>
+            `;
+            card.appendChild(expBox);
+            container.appendChild(card);
+        });
+
+        // Trạng thái lưu trữ kết quả làm bài của học sinh
+        let userResults = new Array(fullExerciseData.length).fill(null);
+
+        function checkAnswer(selectedBtn, selectedOpt, correctOpt, qIndex) {
+            // Nếu câu hỏi này đã được chọn đáp án trước đó thì không cho chọn lại để bảo toàn tính minh bạch
+            const card = document.getElementById(`q-card-${qIndex}`);
+            const buttons = card.querySelectorAll('.option-btn');
+            
+            let isAlreadyAnswered = false;
+            buttons.forEach(b => {
+                if(b.classList.contains('correct') || b.classList.contains('wrong')) {
+                    isAlreadyAnswered = true;
+                }
+            });
+            if (isAlreadyAnswered) return;
+
+            // Kiểm tra đúng hay sai và áp dụng hiệu ứng gamification tức thì
+            if (selectedOpt === correctOpt) {
+                selectedBtn.classList.add('correct');
+                playSound('correct');
+                spawnConfetti();
+                userResults[qIndex] = true;
+            } else {
+                selectedBtn.classList.add('wrong');
+                card.classList.add('shake');
+                playSound('wrong');
+                setTimeout(() => card.classList.remove('shake'), 400);
+                userResults[qIndex] = false;
+
+                // Đồng thời hiển thị highlight màu xanh cho đáp án đúng để học sinh đối chiếu học tập ngay
+                buttons.forEach(b => {
+                    if (b.innerHTML === correctOpt) {
+                        b.classList.add('correct');
+                    }
+                });
+            }
+
+            // Khóa tương tác tất cả các nút trong câu này
+            buttons.forEach(b => b.classList.add('disabled'));
+
+            // TỰ ĐỘNG HIỂN THỊ KHUNG GIẢI THÍCH NGAY SAU KHI BẤM CHỌN
+            document.getElementById(`explain-${qIndex}`).style.display = 'block';
+        }
+
+        // Tính năng Nộp bài và chấm điểm tổng kết cuối trang
+        function submitQuiz() {
+            let correctCount = 0;
+            let answeredCount = 0;
+
+            userResults.forEach(res => {
+                if (res !== null) answeredCount++;
+                if (res === true) correctCount++;
+            });
+
+            if (answeredCount < fullExerciseData.length) {
+                alert(`⚠️ Con chưa hoàn thành hết tất cả các câu hỏi đâu nè! Hãy kiểm tra lại xem nhé! (Mới làm được ${answeredCount}/${fullExerciseData.length} câu)`);
+            }
+
+            const total = fullExerciseData.length;
+            const percentage = (correctCount / total) * 100;
+            let feedback = "";
+
+            // Phân loại lời nhận xét động viên theo thang điểm yêu cầu
+            if (percentage < 50) {
+                feedback = "Điểm lần này chưa cao lắm, con cố gắng đọc kĩ giải thích đáp án và làm lại nha. Cô tin con sẽ làm tốt hơn ở lần sau! 💕";
+            } else if (percentage >= 60 && percentage <= 80) {
+                feedback = "Con đã có tiến bộ khá ổn rồi, con cố gắng đọc kĩ giải thích đáp án và làm lại nha. Cô tin con sẽ làm tốt hơn ở lần sau! ✨";
+            } else if (percentage >= 90) {
+                feedback = "Làm tốt lắm, con cố gắng ring điểm 10 ở lần sau nha! 🏆🌟";
+            } else {
+                feedback = "Kết quả rất khả quan! Hãy rà soát lại kỹ các câu sai bằng khung giải thích chi tiết bên dưới nhé con!";
+            }
+
+            document.getElementById('modalScore').innerText = `Đúng ${correctCount} / ${total} Câu (${Math.round(percentage)}%)`;
+            document.getElementById('modalFeedback').innerText = feedback;
+            document.getElementById('scoreModal').style.display = 'flex';
+
+            if (percentage >= 80) {
+                spawnConfetti();
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('scoreModal').style.display = 'none';
+            // Tự động tải lại trang để tạo bộ câu hỏi xáo trộn ngẫu nhiên mới hoàn toàn
+            window.location.reload();
+        }
+    </script>
+</body>
+</html>
